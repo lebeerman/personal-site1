@@ -1,0 +1,147 @@
+#video-bg {
+  position: absolute;
+  display: block;
+  top: 0; right: 0; bottom: 0; left: 0;
+  overflow: hidden;
+  z-index: -10;
+
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+#video-bg > video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+}
+/* 1. No object-fit support: */
+@media (min-aspect-ratio: 16/9) {
+  #video-bg > video { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  #video-bg > video { width: 300%; left: -100%; }
+}
+/* 2. If supporting object-fit, overriding (1): */
+@supports (object-fit: cover) {
+  #video-bg > video {
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -10;
+  }
+}
+
+@import "compass/css3";
+
+
+/*---------GENERAL STYLING (flexbox schtuff!)---------*/
+.content {
+  z-index:3000;
+  display: block;
+}
+
+
+header {
+  background: black;
+  opacity: 0.8;
+  display: flex;
+  width: 200px;
+  border-radius: 5px;
+  margin: 10px;
+
+  justify-content: space-between;
+}
+.stuff {
+  display:flex;
+  flex-direction: column;
+
+  padding: .2em .4em;
+  justify-content: center;
+}
+
+
+.navigation, h1, h2, h3, h4, h5 {
+  text-transform: uppercase;
+}
+.navigation, h1, h2, h3, h4, h5, p, li {
+  font-family: helvetica, sans-serif;
+  color: white;
+}
+(.navigation, h1, h2, h3, h4, h5, p, li):hover{
+  color:orange;
+}
+li {
+  list-style: none;
+  margin-bottom: 3px;
+}
+body {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+
+}
+
+main {
+  display:flex;
+  flex-direction: row;
+  background-color: black;
+  opacity: 0.8;
+  width: 30%;
+  border-radius: 5px;
+  margin: 10px;
+  padding: .2em .4em;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.mybackground {
+  align-self: flex-end;
+  color: red;
+}
+
+section {
+  display:flex;
+  flex-direction: column;
+
+  padding: .2em .4em;
+  justify-content: center;
+  text-align: center;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+footer {
+  align-self: stretch;
+  text-align: center;
+}
+/*---------NAVIGATION STYLING (flexbox schtuff!)---------*/
+
+
+.navigation ul {
+  list-style: none;
+  list-style-type: none;
+  background-color: black;
+  margin: 0;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: .2em;
+  color: white;
+  z-index: 30000;
+
+}
+
+ ul a:hover {
+  opacity: 1;
+  color: orange;
+  background: black;
+  z-index: 30000;
+}
